@@ -1,0 +1,378 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 20px;
+    background-image: url('/static/images/login.png');
+    background-size: cover;
+    background-position: center;
+} 
+
+.student_body {
+    background-image: url('/static/images/student.png');
+}
+
+.nurse_body {
+    background-image: url('/static/images/bg_only.png');
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    height: 750px;
+    margin: 0 auto;
+    background: darkred;
+    padding: 20px;
+    padding-top: 150px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.514);
+}
+
+.student_logoutbtn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    width: 100px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.student_logoutbtn:hover {
+    background-color: blue;
+}
+
+.left_side {
+    flex: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 400;
+}
+
+.choice {
+    background-color: darkkhaki;
+    border: 0;
+    width: 300px;
+    height: 50px;
+    margin: 20px;
+    border-radius: 20px;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+button {
+    background-color: darkkhaki;
+    border: 0;
+    margin: 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+    background-color: blue;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: beige;
+    height: 300px;
+    width: 300;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.loginField {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    width: 300px;
+    height: 30px;
+    margin: 0;
+    padding: 5px;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-bottom: 20px; 
+}
+
+label {
+    font-weight: bold; 
+    margin-bottom: 5px;
+}
+
+.labelh1 {
+    color: white
+}
+
+#uploadForm {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 400px;
+    height: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);   
+}
+
+select {
+    height: 30px;
+    width: 320px;
+    font-size: 20px;
+}
+
+.container_nurse {
+    flex: 70%;
+}
+
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    padding: 20px;
+    gap: 20px;
+}
+
+.student-card {
+    width: 250px;
+    height: 350px;
+    background: beige;
+    border-style: solid;
+    border-width: 3px;
+    border-color: darkred;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.nursebtn {
+    background-color: darkkhaki;
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 5px;
+    width: 100%;
+}
+
+.student-card:hover {
+    transform: scale(1.05);
+}
+
+.student-card strong {
+    display: block; 
+}
+
+.label-value {
+    display: flex; 
+    justify-content: left; 
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    background-color: beige;
+    padding: 15px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: darkred;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+nav a {
+    color: black; 
+    text-decoration: none;
+    font-size: 20px;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: blue;
+}
+
+.container_admin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 880px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container_studentbl {
+    width: 60%;
+    height: 100%;
+    background: beige;
+    border:  2px solid darkred;
+    border-radius: 10px;
+    text-align: center  ;
+    margin-right: 10px;
+    padding: 2px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.container_nursetbl {
+    width: 40%;
+    height: 100%;
+    background: beige;
+    border:  2px solid darkred;
+    border-radius: 10px;
+    text-align: center  ;
+    padding: 2px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.container_schedtbl {
+    width: 100%;
+    height: 100%;
+    background: beige;
+    border:  2px solid darkred;
+    border-radius: 10px;
+    text-align: center  ;
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.container_admin button {
+    width: 80px;
+    height: 20px;
+    font-size: 15px;
+
+}
+
+#csvForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: beige;
+    width: 350px;
+    height: 200px;
+    padding: 20px;
+    border:  2px solid darkred;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+}
+
+th {
+    background-color: darkkhaki;
+    padding: 10px;
+    border: 2px solid darkred;
+}
+
+td {
+    background-color: beige;
+    padding: 10px;
+    border: 2px solid darkred;
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: 100%;
+    background-color: darkred
+}
+
+.container_pdf {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 880px;
+    margin: 0 auto;
+    margin-left: 10px;
+    background: darkred;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid darkred;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fullnamePdf {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.scroll_container {
+    max-height: 750px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.search_bar {
+    margin-bottom: 10px;
+    border-radius: 2px;
+    border-color: darkred;
+    height: 30px;
+    position: absolute;
+    left: 60px;
+    top: 65px;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="left_side">
+    </div>
+    <div class="container">
+        <h1 class = "labelh1">Student Login</h1>
+        <form id="loginForm" onsubmit="return login('student')">
+            <div class="inputContainer">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="loginField" placeholder="@bpsu.edu.ph" required>
+            </div>
+            <div class="inputContainer">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="loginField"class="loginField" placeholder="*******" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>

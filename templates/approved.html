@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approved Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class = "nurse_body">
+    <div class="container_nurse">
+        <nav>
+            <a href="{{ url_for('nurse_main') }}">Nurse Main</a>
+            <a href="{{ url_for('pending') }}">Pending</a>
+            <a href="{{ url_for('schedule') }}">Schedules</a>
+            <a href="{{ url_for('login_nurse') }}">Log-out</a>
+        </nav>
+
+        <h1>Approved Students</h1>
+        <form method="GET" action="/approved">
+            <select name="school_year">
+                <option value="">Select School Year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="5th Year">5th Year</option>
+            </select>
+            <input type="text" name="search_name" placeholder="Search by full name" />
+            <button type="submit">Search</button>
+        </form>
+        <div class="students-grid">
+            {% for student in students %}
+                <div class="student-card">
+                    <div class="label-value">
+                        <strong>File ID:</strong> {{ student.id }}
+                    </div>
+                    <div class="label-value">
+                        <strong>Name:</strong> <span id="student-name-{{ student.id }}">{{ student.full_name }}</span>
+                    </div>
+                    <div class="label-value">
+                        <strong>School Year:</strong> <span id="student-school-year-{{ student.id }}">{{ student.school_year }}</span>
+                    </div>             
+                    
+                    <button class = "nursebtn" onclick="displayInIframe({{ student.id }}, 'lab_result', 'approved')">View Lab Result</button>
+                    <button class = "nursebtn" onclick="displayInIframe({{ student.id }}, 'med_cert', 'approved')">View Medical Certificate</button>
+
+                    <textarea class = "nursecom" placeholder="Add a comment" id="comment-{{ student.id }}"></textarea>
+                    <button class="nursebtn" id="comment-btn-{{ student.id }}" onclick="submitComment({{ student.id }}, 'approved')" disabled>Upload Comment</button>
+                    <button class="nursebtn" id="pending-btn-{{ student.id }}" onclick="moveToPending({{ student.id }})" disabled>Move to Pending</button>
+                    <button class="nursebtn" id="schedule-btn-{{ student.id }}" onclick="openScheduleModal({{ student.id }})" disabled>Release Schedule</button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeScheduleModal()">&times;</span>
+            <h2>Set Schedule</h2>
+            <form id="scheduleForm" method="POST" onsubmit="submitSchedule(); return false;">
+                <input type="hidden" id="student_id" name="student_id">
+                <input type="hidden" id="student_name" name="student_name">
+                <input type="hidden" id="student_school_year" name="student_school_year">
+                <label for="sched_date">Select Date:</label>
+                <input type="date" id="sched_date" name="sched_date" required><br><br>
+    
+                <label for="sched_time">Select Time:</label>
+                <select name="sched_time" id="sched_time" required>
+                    <option value="8am-12pm">8 AM to 12 PM</option>
+                    <option value="1pm-4pm">1 PM to 4 PM</option>
+                </select><br><br>
+    
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="container_pdf">
+        <div class="fullnamePdf">
+            <strong>Student Name:</strong> <span id="student-name-display"></span>
+        </div>   
+        <div class="pdf-viewer">
+            <iframe id="pdfIframe" src="" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+        </div>        
+    </div>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>

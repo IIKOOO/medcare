@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Schedules</title>
+    <script src="/static/login.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container_admin">
+        <div class = "container_schedtbl">
+            <nav>
+                <a href="{{ url_for('nurse_main') }}">Nurse Main</a>
+                <h2>Student Schedules Table</h2>
+                <a href="/download_schedules" class="download-link">Download Schedules</a>
+            </nav>
+            <table id="scheduleTable">
+                <tr>
+                    <th>Schedule ID</th>
+                    <th>Full Name</th>
+                    <th>School Year</th>
+                    <th>Student ID</th>
+                    <th>Schedule Date</th>
+                    <th>Schedule Time</th>
+                </tr>
+                {% for schedule in schedules %}
+                <tr>
+                    <td>{{ schedule.id }}</td>
+                    <td>{{ schedule.full_name }}</td>
+                    <td>{{ schedule.school_year }}</td>
+                    <td>{{ schedule.student_id }}</td>
+                    <td>{{ schedule.sched_date.strftime('%Y-%m-%d') if schedule.sched_date else '' }}</td>
+                    <td>{{ schedule.sched_time }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div> 
+</body>
+</html>

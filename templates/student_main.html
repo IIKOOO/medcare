@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Main</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class = "student_body">
+    <div class="left_side">
+    </div>
+    <div class="container">
+        <a class = "student_logoutbtn" href="{{ url_for('login_student') }}">Log Out</a>
+        <h1 class = "labelh1">Upload Medical Documents</h1>
+        
+        <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+
+            <div  class="inputContainer">
+                <div class="label-value">
+                    <strong>Full Name:</strong> {{ student_info.full_name }}<br>
+                </div>
+                <div class="label-value">
+                    <strong>School Year:</strong> {{ student_info.school_year }}<br>
+                </div>
+                <div class="label-value">
+                    <strong>Student ID:</strong> {{ student_info.student_id }}<br>
+                </div>
+            </div>
+
+            <input type="hidden" name="full_name" value="{{ student_info.full_name }}">
+            <input type="hidden" name="school_year" value="{{ student_info.school_year }}">
+            <input type="hidden" name="student_id" value="{{ student_info.student_id }}">
+
+            <div class="inputContainer">
+                <label for="lab_result_file">Upload Lab Result:</label>
+                <input type="file" name="lab_result_file" accept="application/pdf" class="loginField">
+            </div>
+        
+            <div class="inputContainer">
+                <label for="med_cert_file">Upload Medical Certificate (if needed):</label>
+                <input type="file" name="med_cert_file" accept="application/pdf" class="loginField">
+            </div>
+        
+            <button type="submit">Upload</button>
+
+            <div class="inputContainer">
+                <label for="comments">Nurse Comment:</label>
+                <textarea id="comments" name="comments" rows="8" cols="50" placeholder="No comment yet" readonly>{{ description }}</textarea>
+            </div>
+
+            <div  class="inputContainer">
+                <div class="label-value">
+                    <strong>Schedule Date:</strong> {{ sched_date }}<br>
+                </div>
+                <div class="label-value">
+                    <strong>Schedule Time:</strong> {{ sched_time }}<br>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>

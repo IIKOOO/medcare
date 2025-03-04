@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Manage Users</title>
+    <script src="/static/login.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container_admin">
+        <div class = "container_studentbl">
+            <h2>Student Login Table</h2>
+            <input type="text" id="searchStudent" class="search_bar" placeholder="Search by fullname" onkeyup="searchStudentTable()">
+            <div class = "scroll_container">
+                <table id="studentTable">
+                <tr>
+                    <th>Account ID</th><th>Email</th><th>Password</th><th>Fullname</th><th>School Year</th><th>Student ID</th><th>Actions</th>
+                </tr>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.account_id }}</td><td>{{ student.email }}</td><td>{{ student.password }}</td>
+                    <td>{{ student.fullname }}</td><td>{{ student.school_year }}</td><td>{{ student.student_id }}</td>
+                    <td>
+                        <button onclick="deleteUser('student_login', {{ student.account_id }})">Delete</button>
+                        {% if student.is_active %}
+                        <button onclick="toggleAccountStatus('student_login', {{ student.account_id }}, 'deactivate')">Deactivate</button>
+                        {% else %}
+                        <button onclick="toggleAccountStatus('student_login', {{ student.account_id }}, 'activate')">Activate</button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class = "container_nursetbl">
+            <h2>Nurse Login Table</h2>
+            <div class = "scroll_container">
+                <table id="nurseTable">
+                <tr>
+                    <th>Account ID</th><th>Email</th><th>Password</th><th>Actions</th>
+                </tr>
+                {% for nurse in nurses %}
+                <tr>
+                    <td>{{ nurse.account_id }}</td><td>{{ nurse.email }}</td><td>{{ nurse.password }}</td>
+                    <td>
+                        <button onclick="deleteUser('nurse_login', {{ nurse.account_id }})">Delete</button>
+                        {% if nurse.is_active %}
+                        <button onclick="toggleAccountStatus('nurse_login', {{ nurse.account_id }}, 'deactivate')">Deactivate</button>
+                        {% else %}
+                        <button onclick="toggleAccountStatus('nurse_login', {{ nurse.account_id }}, 'activate')">Activate</button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </table>
+            </div> 
+        </div>
+    </div>
+    <div  class = "container">
+        <a class = "student_logoutbtn" href="{{ url_for('login_admin') }}">Log Out</a>
+        <h1 class = "labelh1">Upload CSV</h1>
+        <form id="csvForm" enctype="multipart/form-data">
+            <input type="file" name="csv_file" required class="loginField">
+            <select name="table">
+                <option value="student_login">Student Login</option>
+                <option value="nurse_login">Nurse Login</option>
+            </select>
+            <button type="button" onclick="uploadCSV()">Upload</button>
+        </form>
+    </div> 
+</body>
+</html>

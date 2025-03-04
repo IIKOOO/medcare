@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Choice</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="left_side">
+    </div>
+    <div class="container">  
+        <h1 class = "labelh1">Login As:</h1>
+        <div id="loginForm">
+            <button class = "choice" onclick="window.location.href='{{ url_for('login_nurse') }}'">Nurse</button>
+            <button class = "choice" onclick="window.location.href='{{ url_for('login_student') }}'">Student</button>
+            <button class = "choice" onclick="window.location.href='{{ url_for('login_admin') }}'">Admin</button>
+        </div>
+    </div>
+</body>
+</html>
